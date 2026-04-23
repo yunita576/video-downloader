@@ -9,25 +9,26 @@ export default async function handler(req, res) {
   if (!url) return res.status(400).json({ error: 'URL wajib diisi.' });
   if (!/tiktok\.com/i.test(url)) return res.status(400).json({ error: 'Hanya menerima link TikTok.' });
 
-  function fixUrl(u) {
+  function fix(u) {
     if (!u) return null;
     if (u.startsWith('http://') || u.startsWith('https://')) return u;
     return 'https://www.tikwm.com' + u;
   }
 
-  // ========== tikwm.com ==========
+  // ========== tikwm (Hanya pakai 'play' yang pasti ada videonya) ==========
   try {
-    var resp = await fetch('https://www.tikwm.com/api/?url=' + encodeURIComponent(url) + '&hd=1');
+    var resp = await fetch('https://www.tikwm.com/api/?url=' + encodeURIComponent(url));
     var data = await resp.json();
     if (data.code === 0 && data.data) {
       var d = data.data;
-      var r = { success: true, platform: 'tiktok', title: d.title || 'TikTok Video', thumbnail: fixUrl(d.cover), downloads: [] };
-      var hd = fixUrl(d.hdplay);
-      var sd = fixUrl(d.play);
-      var mp3 = fixUrl(d.music);
-      if (hd) r.downloads.push({ quality: 'Full HD No Watermark', type: 'video', url: hd });
-      if (sd) r.downloads.push({ quality: 'HD No Watermark', type: 'video', url: sd });
-      if (mp3) r.downloads.push({ quality: 'MP3 Audio', type: 'audio', url: mp3 });
+      var r = { success: true, platform: 'tiktok', title: d.title || 'TikTok Video', thumbnail: fix(d.cover), downloads: [] };
+
+      // play = SD tanpa watermark (PASTI ADA VIDEO)
+      if (d.play) r.downloads.push({ quality: 'No Watermark', type: 'video', url: fix(d.play) });
+
+      // music = MP3
+      if (d.music) r.downloads.push({ quality: 'MP3 Audio', type: 'audio', url: fix(d.music) });
+
       if (r.downloads.length === 0) return res.status(400).json({ error: 'Tidak ada link download.' });
       return res.status(200).json(r);
     }
@@ -52,8 +53,8 @@ export default async function handler(req, res) {
       var data3 = await resp3.json();
       if (data3) {
         var r = { success: true, platform: 'tiktok', title: data2.desc || 'TikTok Video', thumbnail: data2.cover || null, downloads: [] };
-        if (data3.hdplay) r.downloads.push({ quality: 'HD No Watermark', type: 'video', url: data3.hdplay });
-        if (data3.sdplay) r.downloads.push({ quality: 'SD No Watermark', type: 'video', url: data3.sdplay });
+        if (data3.hdplay) r.downloads.push({ quality: 'No Watermark', type: 'video', url: data3.hdplay });
+        else if (data3.sdplay) r.downloads.push({ quality: 'No Watermark', type: 'video', url: data3.sdplay });
         if (data3.music) r.downloads.push({ quality: 'MP3 Audio', type: 'audio', url: data3.music });
         if (r.downloads.length === 0) return res.status(400).json({ error: 'Tidak ada link download.' });
         return res.status(200).json(r);

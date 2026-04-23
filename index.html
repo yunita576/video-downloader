@@ -3,131 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>SaveVid — Download Video TikTok Tanpa Watermark</title>
+  <title>SaveVid — Download TikTok Tanpa Watermark</title>
   <meta name="description" content="Download video TikTok tanpa watermark, gratis, cepat.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --white:#fff;--g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;
+      --w:#fff;--g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;
       --g300:#d1d5db;--g400:#9ca3af;--g500:#6b7280;--g600:#4b5563;
-      --g700:#374151;--g800:#1f2937;--g900:#111827;--black:#000;
-      --accent:#ff0050;--accent2:#ff2d6a;
-      --red:#ef4444;--green:#22c55e;--blue:#3b82f6;--pink:#ec4899;
-      --r:12px;--rl:16px;--rxl:20px;
+      --g700:#374151;--g800:#1f2937;--g900:#111827;--bk:#000;
+      --ac:#ff0050;--ac2:#ff2d6a;
+      --red:#ef4444;--grn:#22c55e;--blu:#3b82f6;--pnk:#ec4899;
     }
     html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--g900);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body{font-family:'Inter',sans-serif;background:var(--w);color:var(--g900);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
     .wrap{max-width:600px;margin:0 auto;padding:0 16px}
 
-    /* NAV */
-    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--g200)}
-    .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px}
-    .nav-logo .ico{width:32px;height:32px;border-radius:8px;background:var(--black);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
-    .nav-logo .tk{color:var(--accent)}
-    .nav-right a{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--g200);background:var(--white);color:var(--g600);text-decoration:none;transition:.2s}
-    .nav-right a:hover{background:var(--g50)}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--g200)}
+    .nl{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px}
+    .nl .ic{width:30px;height:30px;border-radius:8px;background:var(--bk);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
+    .nl .tk{color:var(--ac)}
+    .nr a{width:30px;height:30px;border-radius:8px;border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;color:var(--g500);text-decoration:none;font-size:13px;transition:.2s}
+    .nr a:hover{background:var(--g50)}
 
-    /* HERO */
-    .hero{text-align:center;padding:32px 0 20px}
-    .hero-img{width:180px;height:180px;border-radius:var(--rxl);overflow:hidden;margin:0 auto 20px;border:1px solid var(--g200);box-shadow:0 8px 30px rgba(0,0,0,.08)}
-    .hero-img img{width:100%;height:100%;object-fit:cover}
-    .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;background:var(--g100);border:1px solid var(--g200);font-size:11px;font-weight:600;color:var(--g500);margin-bottom:14px}
-    .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-    .hero h1{font-size:26px;font-weight:900;letter-spacing:-.3px;line-height:1.1;margin-bottom:10px}
-    .hero h1 .gr{background:linear-gradient(135deg,var(--accent),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero p{font-size:13px;color:var(--g500);line-height:1.6;max-width:360px;margin:0 auto 16px}
-    .tk-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:12px;background:var(--black);color:#fff;font-size:13px;font-weight:700}
-    .tk-badge i{font-size:18px;color:var(--accent)}
+    .hero{text-align:center;padding:20px 0 16px}
+    .hero-img{width:140px;height:140px;border-radius:20px;overflow:hidden;margin:0 auto 16px;border:1px solid var(--g200);box-shadow:0 6px 24px rgba(0,0,0,.07)}
+    .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;background:var(--g100);border:1px solid var(--g200);font-size:11px;font-weight:600;color:var(--g500);margin-bottom:12px}
+    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--grn);animation:pu 2s ease-in-out infinite}
+    @keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero h1{font-size:22px;font-weight:900;letter-spacing:-.3px;line-height:1.15;margin-bottom:8px}
+    .hero .gr{background:linear-gradient(135deg,var(--ac),var(--pnk));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:12px;color:var(--g500);line-height:1.6;margin:0 auto 12px}
+    .tkb{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border-radius:10px;background:var(--bk);color:#fff;font-size:12px;font-weight:700}
+    .tkb i{font-size:16px;color:var(--ac)}
 
-    /* INPUT */
-    .input-sec{margin-bottom:24px}
-    .input-card{background:var(--g50);border:1px solid var(--g200);border-radius:var(--rxl);padding:20px}
-    .input-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .input-lbl{font-size:11px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
-    .input-lbl i{color:var(--accent)}
-    .input-hint{font-size:10px;color:var(--g400)}
-    .input-box{display:flex;align-items:center;background:var(--white);border:2px solid var(--g200);border-radius:var(--rl);overflow:hidden;transition:.3s}
-    .input-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,0,80,.06)}
-    .input-box input{flex:1;background:transparent;border:none;outline:none;padding:14px 16px;color:var(--g900);font-size:13px;font-family:inherit}
-    .input-box input::placeholder{color:var(--g400)}
-    .paste-btn{padding:10px 12px;background:transparent;border:none;color:var(--g400);cursor:pointer;font-size:15px;transition:.2s}
-    .paste-btn:hover{color:var(--accent)}
-    .go-btn{margin:4px;border:none;border-radius:8px;padding:10px 22px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;display:flex;align-items:center;gap:6px}
-    .go-btn:hover{background:var(--accent2)}
-    .go-btn:disabled{opacity:.4;cursor:not-allowed}
-    .go-btn .spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
-    @keyframes sp{to{transform:rotate(360deg)}}
-    .det{display:none;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--accent);font-weight:600}
+    .isec{margin-bottom:20px}
+    .icard{background:var(--g50);border:1px solid var(--g200);border-radius:16px;padding:16px}
+    .itop{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .ilbl{font-size:10px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:5px}
+    .ilbl i{color:var(--ac);font-size:12px}
+    .ihint{font-size:9px;color:var(--g400)}
+    .ibox{display:flex;align-items:center;background:var(--w);border:2px solid var(--g200);border-radius:12px;overflow:hidden;transition:.3s}
+    .ibox:focus-within{border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,0,80,.06)}
+    .ibox input{flex:1;background:transparent;border:none;outline:none;padding:12px 14px;color:var(--g900);font-size:13px;font-family:inherit}
+    .ibox input::placeholder{color:var(--g400)}
+    .pbtn{padding:10px;background:transparent;border:none;color:var(--g400);cursor:pointer;font-size:14px}
+    .pbtn:hover{color:var(--ac)}
+    .gbtn{margin:3px;border:none;border-radius:8px;padding:10px 18px;background:var(--ac);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+    .gbtn:active{transform:scale(.96)}
+    .gbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+    .gbtn .sp{width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spp .6s linear infinite}
+    @keyframes spp{to{transform:rotate(360deg)}}
+    .det{display:none;align-items:center;gap:5px;margin-top:8px;font-size:11px;color:var(--ac);font-weight:600}
     .det.show{display:flex}
 
-    /* RESULT */
-    .result{display:none;margin-bottom:24px;animation:fu .3s ease}
+    .result{display:none;margin-bottom:20px;animation:fu .3s ease}
     .result.show{display:block}
-    @keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-    .res-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rxl);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06)}
-    .res-top{padding:16px}
-    .res-thumb{width:100%;height:200px;border-radius:var(--r);object-fit:cover;background:var(--g100);margin-bottom:12px;border:1px solid var(--g200)}
-    .res-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;background:rgba(255,0,80,.06);color:var(--accent);margin-bottom:8px}
-    .res-title{font-size:14px;font-weight:700;line-height:1.4;color:var(--g800);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .rcard{background:var(--w);border:1px solid var(--g200);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.05)}
+    .rtop{padding:14px}
+    .rthumb{width:100%;aspect-ratio:16/9;border-radius:10px;object-fit:cover;background:var(--g100);margin-bottom:10px;display:block;border:1px solid var(--g200)}
+    .rtag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;background:rgba(255,0,80,.06);color:var(--ac);margin-bottom:6px}
+    .rtitle{font-size:13px;font-weight:700;line-height:1.4;color:var(--g800);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
-    /* DOWNLOAD BUTTONS - yang penting kelihatan */
-    .res-dl{border-top:1px solid var(--g100);padding:16px}
-    .dl-item{margin-bottom:10px}
-    .dl-item:last-child{margin-bottom:0}
-    .dl-btn{
-      display:flex;align-items:center;justify-content:center;gap:10px;
-      width:100%;padding:14px;border-radius:var(--r);border:none;
+    .rdl{padding:12px 14px;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--g100)}
+    .dbtn{
+      display:flex;align-items:center;justify-content:center;gap:8px;
+      width:100%;padding:14px;border-radius:10px;border:none;
       font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;
-      text-decoration:none;transition:.2s;
+      text-decoration:none;transition:.15s;
     }
-    .dl-btn.video{background:var(--accent);color:#fff}
-    .dl-btn.audio{background:var(--blue);color:#fff}
-    .dl-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
-    .dl-btn:active{transform:scale(.98)}
-    .dl-btn i{font-size:16px}
-    .dl-quality{font-size:11px;font-weight:500;opacity:.8;margin-left:4px}
+    .dbtn.video{background:var(--ac);color:#fff}
+    .dbtn.audio{background:var(--blu);color:#fff}
+    .dbtn:active{transform:scale(.97)}
+    .dbtn i{font-size:15px}
+    .dbtn small{font-size:10px;font-weight:500;opacity:.75;margin-left:2px}
 
-    /* ERROR */
-    .error{display:none;margin-bottom:24px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:var(--r);padding:14px 16px;animation:fu .3s ease}
-    .error.show{display:flex;align-items:center;gap:10px}
-    .error i{color:var(--red);font-size:16px;flex-shrink:0}
-    .error span{font-size:12px;color:var(--red);line-height:1.5}
+    .error{display:none;margin-bottom:20px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:12px 14px;animation:fu .3s ease}
+    .error.show{display:flex;align-items:center;gap:8px}
+    .error i{color:var(--red);font-size:15px;flex-shrink:0}
+    .error span{font-size:11px;color:var(--red);line-height:1.5}
 
-    /* HOW TO */
-    .howto{padding:32px 0;border-top:1px solid var(--g200)}
-    .howto h2{font-size:18px;font-weight:800;text-align:center;margin-bottom:20px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-    .step{text-align:center;padding:16px 10px;border-radius:var(--rl);border:1px solid var(--g200);background:var(--white)}
-    .step-n{width:32px;height:32px;border-radius:8px;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;margin:0 auto 10px}
-    .step h3{font-size:12px;font-weight:700;margin-bottom:4px;color:var(--g800)}
-    .step p{font-size:10px;color:var(--g400);line-height:1.4}
+    .howto{padding:24px 0;border-top:1px solid var(--g200)}
+    .howto h2{font-size:16px;font-weight:800;text-align:center;margin-bottom:14px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .step{text-align:center;padding:12px 8px;border-radius:12px;border:1px solid var(--g200)}
+    .sn{width:28px;height:28px;border-radius:8px;background:var(--bk);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin:0 auto 8px}
+    .step h3{font-size:11px;font-weight:700;margin-bottom:3px;color:var(--g800)}
+    .step p{font-size:9px;color:var(--g400);line-height:1.4}
 
-    /* FEATURES */
-    .feats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:24px 0 40px;border-top:1px solid var(--g200)}
-    .feat{padding:16px;border-radius:var(--rl);border:1px solid var(--g200)}
-    .feat-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:10px}
-    .feat:nth-child(1) .feat-ico{background:rgba(255,0,80,.06);color:var(--accent)}
-    .feat:nth-child(2) .feat-ico{background:rgba(34,197,94,.06);color:var(--green)}
-    .feat:nth-child(3) .feat-ico{background:rgba(59,130,246,.06);color:var(--blue)}
-    .feat:nth-child(4) .feat-ico{background:rgba(236,72,153,.06);color:var(--pink)}
-    .feat h3{font-size:12px;font-weight:700;margin-bottom:3px;color:var(--g800)}
-    .feat p{font-size:10px;color:var(--g400);line-height:1.5}
+    .feats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:20px 0 32px;border-top:1px solid var(--g200)}
+    .feat{padding:14px;border-radius:12px;border:1px solid var(--g200)}
+    .fi{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:8px}
+    .feat:nth-child(1) .fi{background:rgba(255,0,80,.06);color:var(--ac)}
+    .feat:nth-child(2) .fi{background:rgba(34,197,94,.06);color:var(--grn)}
+    .feat:nth-child(3) .fi{background:rgba(59,130,246,.06);color:var(--blu)}
+    .feat:nth-child(4) .fi{background:rgba(236,72,153,.06);color:var(--pnk)}
+    .feat h3{font-size:11px;font-weight:700;margin-bottom:2px;color:var(--g800)}
+    .feat p{font-size:9px;color:var(--g400);line-height:1.4}
 
-    /* FOOTER */
-    footer{border-top:1px solid var(--g200);padding:20px 0;text-align:center}
-    footer p{font-size:11px;color:var(--g400)}
-    .ft-tk{color:var(--accent)}
+    footer{border-top:1px solid var(--g200);padding:16px 0;text-align:center}
+    footer p{font-size:10px;color:var(--g400)}
+    .ftk{color:var(--ac)}
 
-    /* DESKTOP */
     @media(min-width:768px){
-      .wrap{max-width:700px;padding:0 24px}
-      .hero{padding:48px 0 32px}
-      .hero-img{width:220px;height:220px}
-      .hero h1{font-size:36px}
-      .res-thumb{height:280px}
+      .wrap{max-width:640px;padding:0 24px}
+      .hero{padding:36px 0 24px}
+      .hero-img{width:180px;height:180px}
+      .hero h1{font-size:32px}
+      .rthumb{aspect-ratio:16/9}
     }
   </style>
 </head>
@@ -135,13 +121,8 @@
 <div class="wrap">
 
   <nav>
-    <div class="nav-logo">
-      <div class="ico"><i class="fas fa-download"></i></div>
-      Save<span class="tk">Vid</span>
-    </div>
-    <div class="nav-right">
-      <a href="https://github.com/yunita576/video-downloader" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
+    <div class="nl"><div class="ic"><i class="fas fa-download"></i></div>Save<span class="tk">Vid</span></div>
+    <div class="nr"><a href="https://github.com/yunita576/video-downloader" target="_blank"><i class="fab fa-github"></i></a></div>
   </nav>
 
   <section class="hero">
@@ -151,32 +132,32 @@
     <div class="hero-badge"><span class="dot"></span> Online 24/7</div>
     <h1>Download Video <span class="gr">TikTok</span> Tanpa Watermark</h1>
     <p>Tempel link, klik download. Video bersih tanpa watermark, gratis tanpa batas.</p>
-    <div class="tk-badge"><i class="fab fa-tiktok"></i> TikTok Downloader</div>
+    <div class="tkb"><i class="fab fa-tiktok"></i> TikTok Downloader</div>
   </section>
 
-  <section class="input-sec">
-    <div class="input-card">
-      <div class="input-top">
-        <div class="input-lbl"><i class="fab fa-tiktok"></i> Tempel Link TikTok</div>
-        <div class="input-hint">tiktok.com only</div>
+  <section class="isec">
+    <div class="icard">
+      <div class="itop">
+        <div class="ilbl"><i class="fab fa-tiktok"></i> Tempel Link TikTok</div>
+        <div class="ihint">tiktok.com only</div>
       </div>
-      <div class="input-box">
+      <div class="ibox">
         <input type="text" id="u" placeholder="https://www.tiktok.com/@user/video/..." autocomplete="off">
-        <button class="paste-btn" id="bp"><i class="far fa-clipboard"></i></button>
-        <button class="go-btn" id="go"><i class="fas fa-arrow-down" id="goI"></i><span id="goT">Download</span></button>
+        <button class="pbtn" id="bp"><i class="far fa-clipboard"></i></button>
+        <button class="gbtn" id="go"><i class="fas fa-arrow-down" id="goI"></i><span id="goT">Download</span></button>
       </div>
       <div class="det" id="det"><i class="fas fa-check-circle"></i><span id="detT"></span></div>
     </div>
   </section>
 
   <div class="result" id="rc">
-    <div class="res-card">
-      <div class="res-top">
-        <img class="res-thumb" id="rth" src="" alt="">
-        <div class="res-tag"><i class="fab fa-tiktok"></i> TikTok</div>
-        <div class="res-title" id="rtl"></div>
+    <div class="rcard">
+      <div class="rtop">
+        <img class="rthumb" id="rth" src="" alt="">
+        <div class="rtag"><i class="fab fa-tiktok"></i> TikTok</div>
+        <div class="rtitle" id="rtl"></div>
       </div>
-      <div class="res-dl" id="dls"></div>
+      <div class="rdl" id="dls"></div>
     </div>
   </div>
 
@@ -188,21 +169,21 @@
   <section class="howto">
     <h2>Cara Pakai</h2>
     <div class="steps">
-      <div class="step"><div class="step-n">1</div><h3>Salin Link</h3><p>Buka TikTok → Share → Copy Link</p></div>
-      <div class="step"><div class="step-n">2</div><h3>Tempel</h3><p>Paste link di kolom atas, klik Download</p></div>
-      <div class="step"><div class="step-n">3</div><h3>Simpan</h3><p>Klik tombol download, video tersimpan</p></div>
+      <div class="step"><div class="sn">1</div><h3>Salin Link</h3><p>TikTok → Share → Copy Link</p></div>
+      <div class="step"><div class="sn">2</div><h3>Tempel</h3><p>Paste link, klik Download</p></div>
+      <div class="step"><div class="sn">3</div><h3>Simpan</h3><p>Klik tombol, video tersimpan</p></div>
     </div>
   </section>
 
   <section class="feats">
-    <div class="feat"><div class="feat-ico"><i class="fas fa-droplet-slash"></i></div><h3>No Watermark</h3><p>Video bersih tanpa watermark</p></div>
-    <div class="feat"><div class="feat-ico"><i class="fas fa-bolt"></i></div><h3>Instan</h3><p>Download dalam hitungan detik</p></div>
-    <div class="feat"><div class="feat-ico"><i class="fas fa-shield-halved"></i></div><h3>Aman</h3><p>Data tidak disimpan di server</p></div>
-    <div class="feat"><div class="feat-ico"><i class="fas fa-infinity"></i></div><h3>Gratis</h3><p>Tanpa daftar, tanpa batas</p></div>
+    <div class="feat"><div class="fi"><i class="fas fa-droplet-slash"></i></div><h3>No Watermark</h3><p>Video bersih tanpa watermark</p></div>
+    <div class="feat"><div class="fi"><i class="fas fa-bolt"></i></div><h3>Instan</h3><p>Download dalam hitungan detik</p></div>
+    <div class="feat"><div class="fi"><i class="fas fa-shield-halved"></i></div><h3>Aman</h3><p>Data tidak disimpan</p></div>
+    <div class="feat"><div class="fi"><i class="fas fa-infinity"></i></div><h3>Gratis</h3><p>Tanpa daftar, tanpa batas</p></div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Save<span class="ft-tk">Vid</span> &middot; <i class="fab fa-tiktok" style="color:var(--accent)"></i> TikTok Downloader</p>
+    <p>&copy; 2025 Save<span class="ftk">Vid</span> &middot; <i class="fab fa-tiktok" style="color:var(--ac)"></i> TikTok Downloader</p>
   </footer>
 
 </div>
@@ -245,8 +226,8 @@ function showR(d){
   dls.innerHTML='';
   d.downloads.forEach(function(it){
     var isA=it.type==='audio';
-    var div=document.createElement('div');div.className='dl-item';
-    div.innerHTML='<a href="'+it.url+'" target="_blank" rel="noopener" class="dl-btn '+(isA?'audio':'video')+'"><i class="fas '+(isA?'fa-music':'fa-download')+'"></i>'+it.quality+'<span class="dl-quality">'+(isA?'Audio':'Video')+'</span></a>';
+    var div=document.createElement('div');
+    div.innerHTML='<a href="'+it.url+'" target="_blank" rel="noopener" class="dbtn '+(isA?'audio':'video')+'"><i class="fas '+(isA?'fa-music':'fa-download')+'"></i>'+it.quality+'<small>'+((isA)?'Audio':'Video')+'</small></a>';
     dls.appendChild(div);
   });
   rc.classList.add('show');
@@ -256,7 +237,7 @@ function showR(d){
 function showE(m){ect.textContent=m;ec.classList.add('show')}
 function setLoading(on){
   go.disabled=on;
-  if(on){goI.className='spin';goT.textContent='Proses...'}
+  if(on){goI.className='sp';goT.textContent='Proses...'}
   else{goI.className='fas fa-arrow-down';goT.textContent='Download'}
 }
 </script>
