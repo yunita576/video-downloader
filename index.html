@@ -2,470 +2,220 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>SaveVid — Download Video TikTok Tanpa Watermark</title>
-  <meta name="description" content="Download video TikTok tanpa watermark, gratis, cepat, instan.">
+  <meta name="description" content="Download video TikTok tanpa watermark, gratis, cepat.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     :root{
-      --white:#ffffff;--gray50:#f9fafb;--gray100:#f3f4f6;--gray200:#e5e7eb;
-      --gray300:#d1d5db;--gray400:#9ca3af;--gray500:#6b7280;--gray600:#4b5563;
-      --gray700:#374151;--gray800:#1f2937;--gray900:#111827;--black:#000000;
-      --accent:#ff0050;--accent2:#ff2d6a;--accent3:#ff4d85;
+      --white:#fff;--g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;
+      --g300:#d1d5db;--g400:#9ca3af;--g500:#6b7280;--g600:#4b5563;
+      --g700:#374151;--g800:#1f2937;--g900:#111827;--black:#000;
+      --accent:#ff0050;--accent2:#ff2d6a;
       --red:#ef4444;--green:#22c55e;--blue:#3b82f6;--pink:#ec4899;
-      --radius:12px;--radius-lg:16px;--radius-xl:24px;
-      --shadow:0 1px 3px rgba(0,0,0,.06);
-      --shadow-md:0 4px 12px rgba(0,0,0,.06);
-      --shadow-lg:0 12px 40px rgba(0,0,0,.08);
-      --shadow-xl:0 20px 60px rgba(0,0,0,.12);
+      --r:12px;--rl:16px;--rxl:20px;
     }
     html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--gray900);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    body{font-family:'Inter',sans-serif;background:var(--white);color:var(--g900);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    .wrap{max-width:600px;margin:0 auto;padding:0 16px}
 
-    .wrap{position:relative;max-width:1100px;margin:0 auto;padding:0 24px}
+    /* NAV */
+    nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--g200)}
+    .nav-logo{display:flex;align-items:center;gap:8px;font-weight:800;font-size:17px}
+    .nav-logo .ico{width:32px;height:32px;border-radius:8px;background:var(--black);display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px}
+    .nav-logo .tk{color:var(--accent)}
+    .nav-right a{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;border:1px solid var(--g200);background:var(--white);color:var(--g600);text-decoration:none;transition:.2s}
+    .nav-right a:hover{background:var(--g50)}
 
-    /* ===== NAV ===== */
-    nav{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:18px 0;position:sticky;top:0;z-index:50;
-      background:rgba(255,255,255,.88);backdrop-filter:blur(20px);
-      -webkit-backdrop-filter:blur(20px);
-      border-bottom:1px solid var(--gray200);
-    }
-    .nav-logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:-.5px}
-    .nav-logo .icon{
-      width:36px;height:36px;border-radius:10px;
-      background:var(--black);display:flex;align-items:center;justify-content:center;
-      color:#fff;font-size:15px;
-    }
-    .nav-logo .tiktok-txt{color:var(--accent)}
-    .nav-right{display:flex;align-items:center;gap:8px}
-    .nav-btn{
-      padding:8px 18px;border-radius:10px;font-size:13px;font-weight:600;
-      border:1px solid var(--gray200);background:var(--white);color:var(--gray700);
-      cursor:pointer;transition:.2s;text-decoration:none;font-family:inherit;
-    }
-    .nav-btn:hover{border-color:var(--gray300);background:var(--gray50)}
-    .nav-btn.primary{background:var(--black);color:#fff;border-color:var(--black)}
-    .nav-btn.primary:hover{background:var(--gray800)}
+    /* HERO */
+    .hero{text-align:center;padding:32px 0 20px}
+    .hero-img{width:180px;height:180px;border-radius:var(--rxl);overflow:hidden;margin:0 auto 20px;border:1px solid var(--g200);box-shadow:0 8px 30px rgba(0,0,0,.08)}
+    .hero-img img{width:100%;height:100%;object-fit:cover}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:100px;background:var(--g100);border:1px solid var(--g200);font-size:11px;font-weight:600;color:var(--g500);margin-bottom:14px}
+    .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero h1{font-size:26px;font-weight:900;letter-spacing:-.3px;line-height:1.1;margin-bottom:10px}
+    .hero h1 .gr{background:linear-gradient(135deg,var(--accent),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero p{font-size:13px;color:var(--g500);line-height:1.6;max-width:360px;margin:0 auto 16px}
+    .tk-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:12px;background:var(--black);color:#fff;font-size:13px;font-weight:700}
+    .tk-badge i{font-size:18px;color:var(--accent)}
 
-    /* ===== HERO ===== */
-    .hero{
-      display:grid;grid-template-columns:1fr 1fr;gap:48px;
-      align-items:center;padding:56px 0 40px;min-height:calc(100vh - 70px);
-    }
-    .hero-left{display:flex;flex-direction:column;gap:24px}
-    .hero-badge{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:6px 14px 6px 8px;border-radius:100px;
-      background:var(--gray100);border:1px solid var(--gray200);
-      font-size:12px;font-weight:600;color:var(--gray600);width:fit-content;
-    }
-    .hero-badge .dot{
-      width:8px;height:8px;border-radius:50%;
-      background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.4);
-      animation:pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
-    .hero h1{
-      font-size:clamp(30px,5vw,50px);font-weight:900;letter-spacing:-.5px;
-      line-height:1.05;
-    }
-    .hero h1 .grad{
-      background:linear-gradient(135deg,var(--accent),var(--pink));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
-    }
-    .hero p{font-size:16px;color:var(--gray500);line-height:1.7;max-width:440px}
-
-    /* TikTok badge */
-    .tiktok-badge{
-      display:inline-flex;align-items:center;gap:10px;
-      padding:10px 20px;border-radius:14px;
-      background:var(--black);color:#fff;
-      font-size:14px;font-weight:700;width:fit-content;
-    }
-    .tiktok-badge i{font-size:20px;color:var(--accent)}
-
-    /* Hero image */
-    .hero-right{position:relative;display:flex;align-items:center;justify-content:center}
-    .hero-img-wrap{
-      position:relative;width:100%;max-width:500px;
-      border-radius:var(--radius-xl);overflow:hidden;
-      box-shadow:var(--shadow-xl);
-      border:1px solid var(--gray200);
-      background:var(--black);
-    }
-    .hero-img-wrap img{width:100%;height:auto;display:block}
-    .hero-img-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.4) 100%);
-      pointer-events:none;
-    }
-    .hero-float{
-      position:absolute;padding:12px 18px;border-radius:14px;
-      background:rgba(255,255,255,.95);backdrop-filter:blur(10px);
-      border:1px solid var(--gray200);box-shadow:var(--shadow-lg);
-      display:flex;align-items:center;gap:12px;
-      font-size:12px;font-weight:600;color:var(--gray700);
-      animation:float 4s ease-in-out infinite;
-    }
-    .hero-float.top-right{top:-20px;right:-12px}
-    .hero-float.bottom-left{bottom:-20px;left:-12px;animation-delay:2s}
-    .hero-float .ico{
-      width:36px;height:36px;border-radius:10px;
-      display:flex;align-items:center;justify-content:center;font-size:15px;
-    }
-    .hero-float.top-right .ico{background:rgba(255,0,80,.08);color:var(--accent)}
-    .hero-float.bottom-left .ico{background:rgba(34,197,94,.08);color:var(--green)}
-    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-
-    /* ===== INPUT SECTION ===== */
-    .input-section{margin-bottom:48px}
-    .input-card{
-      background:var(--gray50);border:1px solid var(--gray200);
-      border-radius:var(--radius-xl);padding:32px;
-      box-shadow:var(--shadow);
-    }
-    .input-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-    .input-card-title{font-size:13px;font-weight:700;color:var(--gray500);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
-    .input-card-title i{color:var(--accent);font-size:14px}
-    .input-hint{font-size:11px;color:var(--gray400);font-weight:500}
-    .input-box{
-      display:flex;align-items:center;gap:0;
-      background:var(--white);border:2px solid var(--gray200);
-      border-radius:var(--radius-lg);overflow:hidden;
-      transition:.3s;
-    }
-    .input-box:focus-within{
-      border-color:var(--accent);
-      box-shadow:0 0 0 4px rgba(255,0,80,.06);
-    }
-    .input-box input{
-      flex:1;background:transparent;border:none;outline:none;
-      padding:16px 20px;color:var(--gray900);font-size:14px;font-family:inherit;
-    }
-    .input-box input::placeholder{color:var(--gray400)}
-    .input-box .paste-btn{
-      padding:12px 16px;background:transparent;border:none;
-      color:var(--gray400);cursor:pointer;font-size:16px;transition:.2s;
-      display:flex;align-items:center;
-    }
-    .input-box .paste-btn:hover{color:var(--accent)}
-    .input-box .go-btn{
-      margin:5px;border:none;border-radius:10px;
-      padding:12px 28px;background:var(--accent);
-      color:#fff;font-size:13px;font-weight:700;cursor:pointer;
-      font-family:inherit;transition:.2s;display:flex;align-items:center;gap:8px;
-    }
-    .input-box .go-btn:hover{background:var(--accent2);transform:translateY(-1px);box-shadow:0 4px 16px rgba(255,0,80,.3)}
-    .input-box .go-btn:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
-    .input-box .go-btn .spin{
-      width:16px;height:16px;border:2px solid rgba(255,255,255,.2);
-      border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;
-    }
+    /* INPUT */
+    .input-sec{margin-bottom:24px}
+    .input-card{background:var(--g50);border:1px solid var(--g200);border-radius:var(--rxl);padding:20px}
+    .input-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .input-lbl{font-size:11px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+    .input-lbl i{color:var(--accent)}
+    .input-hint{font-size:10px;color:var(--g400)}
+    .input-box{display:flex;align-items:center;background:var(--white);border:2px solid var(--g200);border-radius:var(--rl);overflow:hidden;transition:.3s}
+    .input-box:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px rgba(255,0,80,.06)}
+    .input-box input{flex:1;background:transparent;border:none;outline:none;padding:14px 16px;color:var(--g900);font-size:13px;font-family:inherit}
+    .input-box input::placeholder{color:var(--g400)}
+    .paste-btn{padding:10px 12px;background:transparent;border:none;color:var(--g400);cursor:pointer;font-size:15px;transition:.2s}
+    .paste-btn:hover{color:var(--accent)}
+    .go-btn{margin:4px;border:none;border-radius:8px;padding:10px 22px;background:var(--accent);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;display:flex;align-items:center;gap:6px}
+    .go-btn:hover{background:var(--accent2)}
+    .go-btn:disabled{opacity:.4;cursor:not-allowed}
+    .go-btn .spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite}
     @keyframes sp{to{transform:rotate(360deg)}}
+    .det{display:none;align-items:center;gap:6px;margin-top:10px;font-size:11px;color:var(--accent);font-weight:600}
+    .det.show{display:flex}
 
-    .detected{
-      display:none;align-items:center;gap:8px;
-      margin-top:14px;padding:0 4px;
-      font-size:12px;color:var(--accent);font-weight:600;
-    }
-    .detected.show{display:flex}
-
-    /* ===== RESULT ===== */
-    .result{display:none;margin-bottom:48px;animation:fadeUp .4s ease}
+    /* RESULT */
+    .result{display:none;margin-bottom:24px;animation:fu .3s ease}
     .result.show{display:block}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    .result-card{
-      background:var(--white);border:1px solid var(--gray200);
-      border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);
-    }
-    .result-top{display:flex;gap:20px;padding:24px}
-    .result-thumb{
-      width:160px;height:110px;border-radius:var(--radius);
-      object-fit:cover;background:var(--gray100);flex-shrink:0;
-      border:1px solid var(--gray200);
-    }
-    .result-meta{flex:1;min-width:0}
-    .result-title{
-      font-size:15px;font-weight:700;line-height:1.4;
-      display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
-      overflow:hidden;margin-bottom:12px;color:var(--gray800);
-    }
-    .result-tag{
-      display:inline-flex;align-items:center;gap:5px;
-      padding:4px 12px;border-radius:8px;
-      font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;
-      background:rgba(255,0,80,.06);color:var(--accent);
-    }
-    .result-dl{border-top:1px solid var(--gray100);padding:16px 24px}
-    .dl-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .dl-item:not(:last-child){border-bottom:1px solid var(--gray100)}
-    .dl-left{display:flex;align-items:center;gap:12px}
-    .dl-icon{
-      width:38px;height:38px;border-radius:10px;
-      display:flex;align-items:center;justify-content:center;font-size:14px;
-    }
-    .dl-icon.video{background:rgba(255,0,80,.06);color:var(--accent)}
-    .dl-icon.audio{background:rgba(59,130,246,.06);color:var(--blue)}
-    .dl-label{font-size:13px;font-weight:700;color:var(--gray800)}
+    @keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .res-card{background:var(--white);border:1px solid var(--g200);border-radius:var(--rxl);overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.06)}
+    .res-top{padding:16px}
+    .res-thumb{width:100%;height:200px;border-radius:var(--r);object-fit:cover;background:var(--g100);margin-bottom:12px;border:1px solid var(--g200)}
+    .res-tag{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;background:rgba(255,0,80,.06);color:var(--accent);margin-bottom:8px}
+    .res-title{font-size:14px;font-weight:700;line-height:1.4;color:var(--g800);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+    /* DOWNLOAD BUTTONS - yang penting kelihatan */
+    .res-dl{border-top:1px solid var(--g100);padding:16px}
+    .dl-item{margin-bottom:10px}
+    .dl-item:last-child{margin-bottom:0}
     .dl-btn{
-      padding:8px 20px;border-radius:10px;border:none;
-      font-size:12px;font-weight:700;cursor:pointer;
-      font-family:inherit;display:flex;align-items:center;gap:6px;
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      width:100%;padding:14px;border-radius:var(--r);border:none;
+      font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;
       text-decoration:none;transition:.2s;
     }
     .dl-btn.video{background:var(--accent);color:#fff}
     .dl-btn.audio{background:var(--blue);color:#fff}
-    .dl-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+    .dl-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.15)}
+    .dl-btn:active{transform:scale(.98)}
+    .dl-btn i{font-size:16px}
+    .dl-quality{font-size:11px;font-weight:500;opacity:.8;margin-left:4px}
 
-    /* ===== ERROR ===== */
-    .error{
-      display:none;margin-bottom:48px;
-      background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.15);
-      border-radius:var(--radius);padding:16px 20px;
-      animation:fadeUp .4s ease;
-    }
-    .error.show{display:flex;align-items:center;gap:12px}
-    .error i{color:var(--red);font-size:18px;flex-shrink:0}
-    .error span{font-size:13px;color:var(--red);line-height:1.5}
+    /* ERROR */
+    .error{display:none;margin-bottom:24px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:var(--r);padding:14px 16px;animation:fu .3s ease}
+    .error.show{display:flex;align-items:center;gap:10px}
+    .error i{color:var(--red);font-size:16px;flex-shrink:0}
+    .error span{font-size:12px;color:var(--red);line-height:1.5}
 
-    /* ===== FEATURES ===== */
-    .features{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-      padding:48px 0 64px;border-top:1px solid var(--gray200);
-    }
-    .feat{
-      padding:24px;border-radius:var(--radius-lg);
-      border:1px solid var(--gray200);background:var(--white);
-      transition:.3s;
-    }
-    .feat:hover{border-color:var(--gray300);box-shadow:var(--shadow-md);transform:translateY(-2px)}
-    .feat-icon{
-      width:40px;height:40px;border-radius:12px;
-      display:flex;align-items:center;justify-content:center;
-      font-size:16px;margin-bottom:16px;
-    }
-    .feat:nth-child(1) .feat-icon{background:rgba(255,0,80,.06);color:var(--accent)}
-    .feat:nth-child(2) .feat-icon{background:rgba(59,130,246,.06);color:var(--blue)}
-    .feat:nth-child(3) .feat-icon{background:rgba(34,197,94,.06);color:var(--green)}
-    .feat:nth-child(4) .feat-icon{background:rgba(236,72,153,.06);color:var(--pink)}
-    .feat h3{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--gray800)}
-    .feat p{font-size:12px;color:var(--gray500);line-height:1.6}
+    /* HOW TO */
+    .howto{padding:32px 0;border-top:1px solid var(--g200)}
+    .howto h2{font-size:18px;font-weight:800;text-align:center;margin-bottom:20px}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .step{text-align:center;padding:16px 10px;border-radius:var(--rl);border:1px solid var(--g200);background:var(--white)}
+    .step-n{width:32px;height:32px;border-radius:8px;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;margin:0 auto 10px}
+    .step h3{font-size:12px;font-weight:700;margin-bottom:4px;color:var(--g800)}
+    .step p{font-size:10px;color:var(--g400);line-height:1.4}
 
-    /* ===== HOW TO ===== */
-    .howto{
-      padding:48px 0 64px;border-top:1px solid var(--gray200);text-align:center;
-    }
-    .howto h2{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px}
-    .howto p.sub{font-size:14px;color:var(--gray400);margin-bottom:40px}
-    .howto-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:640px;margin:0 auto}
-    .step{
-      padding:28px 20px;border-radius:var(--radius-lg);
-      border:1px solid var(--gray200);background:var(--white);
-      transition:.3s;
-    }
-    .step:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
-    .step-num{
-      width:40px;height:40px;border-radius:12px;
-      background:var(--black);color:#fff;
-      display:flex;align-items:center;justify-content:center;
-      font-size:16px;font-weight:800;margin:0 auto 16px;
-    }
-    .step h3{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--gray800)}
-    .step p{font-size:12px;color:var(--gray400);line-height:1.5}
+    /* FEATURES */
+    .feats{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:24px 0 40px;border-top:1px solid var(--g200)}
+    .feat{padding:16px;border-radius:var(--rl);border:1px solid var(--g200)}
+    .feat-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;margin-bottom:10px}
+    .feat:nth-child(1) .feat-ico{background:rgba(255,0,80,.06);color:var(--accent)}
+    .feat:nth-child(2) .feat-ico{background:rgba(34,197,94,.06);color:var(--green)}
+    .feat:nth-child(3) .feat-ico{background:rgba(59,130,246,.06);color:var(--blue)}
+    .feat:nth-child(4) .feat-ico{background:rgba(236,72,153,.06);color:var(--pink)}
+    .feat h3{font-size:12px;font-weight:700;margin-bottom:3px;color:var(--g800)}
+    .feat p{font-size:10px;color:var(--g400);line-height:1.5}
 
-    /* ===== FOOTER ===== */
-    footer{
-      border-top:1px solid var(--gray200);
-      padding:28px 0;text-align:center;
-    }
-    footer p{font-size:12px;color:var(--gray400)}
-    footer a{color:var(--gray400);text-decoration:none}
-    footer a:hover{color:var(--accent)}
-    .footer-tik{color:var(--accent)}
+    /* FOOTER */
+    footer{border-top:1px solid var(--g200);padding:20px 0;text-align:center}
+    footer p{font-size:11px;color:var(--g400)}
+    .ft-tk{color:var(--accent)}
 
-    /* ===== MOBILE ===== */
-    @media(max-width:768px){
-      .hero{grid-template-columns:1fr;gap:28px;padding:32px 0 24px;min-height:auto}
-      .hero-right{order:-1}
-      .hero-img-wrap{max-width:320px;margin:0 auto}
-      .hero-float{display:none}
-      .features{grid-template-columns:1fr 1fr}
-      .howto-steps{grid-template-columns:1fr}
-      .result-top{flex-direction:column}
-      .result-thumb{width:100%;height:200px}
-      .dl-item{flex-direction:column;gap:10px;align-items:stretch}
-      .dl-btn{justify-content:center}
-      .input-card{padding:20px}
-      .nav-btn span{display:none}
-    }
-    @media(max-width:400px){
-      .features{grid-template-columns:1fr}
+    /* DESKTOP */
+    @media(min-width:768px){
+      .wrap{max-width:700px;padding:0 24px}
+      .hero{padding:48px 0 32px}
+      .hero-img{width:220px;height:220px}
+      .hero h1{font-size:36px}
+      .res-thumb{height:280px}
     }
   </style>
 </head>
 <body>
 <div class="wrap">
 
-  <!-- Nav -->
   <nav>
     <div class="nav-logo">
-      <div class="icon"><i class="fas fa-download"></i></div>
-      Save<span class="tiktok-txt">Vid</span>
+      <div class="ico"><i class="fas fa-download"></i></div>
+      Save<span class="tk">Vid</span>
     </div>
     <div class="nav-right">
-      <a href="#howto" class="nav-btn"><i class="fas fa-circle-question" style="margin-right:6px;font-size:12px"></i><span>Cara Pakai</span></a>
-      <a href="https://github.com/yunita576/video-downloader" target="_blank" class="nav-btn"><i class="fab fa-github" style="margin-right:6px;font-size:13px"></i><span>GitHub</span></a>
+      <a href="https://github.com/yunita576/video-downloader" target="_blank"><i class="fab fa-github"></i></a>
     </div>
   </nav>
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="hero-left">
-      <div class="hero-badge">
-        <span class="dot"></span>
-        Online 24/7
-      </div>
-      <h1>Download Video <span class="grad">TikTok</span> Tanpa Watermark</h1>
-      <p>Tempel link TikTok, langsung download. Video bersih tanpa watermark, resolusi HD, gratis tanpa batas.</p>
-
-      <div class="tiktok-badge">
-        <i class="fab fa-tiktok"></i>
-        TikTok Downloader
-      </div>
+    <div class="hero-img">
+      <img src="https://z-cdn-media.chatglm.cn/files/f5e7b3b7-3b65-4213-911e-0654ddcfeca9.jpg?auth_key=1876964054-4281e64405e24a8dbbad45057c9d224b-0-c1218fc05366ee558a73523b15cb071d" alt="SaveVid">
     </div>
-
-    <div class="hero-right">
-      <div class="hero-img-wrap">
-        <img src="https://z-cdn-media.chatglm.cn/files/f5e7b3b7-3b65-4213-911e-0654ddcfeca9.jpg?auth_key=1876964054-4281e64405e24a8dbbad45057c9d224b-0-c1218fc05366ee558a73523b15cb071d" alt="SaveVid" loading="eager">
-        <div class="hero-img-overlay"></div>
-      </div>
-      <div class="hero-float top-right">
-        <div class="ico"><i class="fas fa-bolt"></i></div>
-        <div>
-          <div style="font-size:11px;color:var(--gray400)">Kecepatan</div>
-          <div style="font-size:14px;font-weight:800;color:var(--gray900)">Instan</div>
-        </div>
-      </div>
-      <div class="hero-float bottom-left">
-        <div class="ico"><i class="fas fa-droplet-slash"></i></div>
-        <div>
-          <div style="font-size:11px;color:var(--gray400)">Watermark</div>
-          <div style="font-size:14px;font-weight:800;color:var(--gray900)">Nihil</div>
-        </div>
-      </div>
-    </div>
+    <div class="hero-badge"><span class="dot"></span> Online 24/7</div>
+    <h1>Download Video <span class="gr">TikTok</span> Tanpa Watermark</h1>
+    <p>Tempel link, klik download. Video bersih tanpa watermark, gratis tanpa batas.</p>
+    <div class="tk-badge"><i class="fab fa-tiktok"></i> TikTok Downloader</div>
   </section>
 
-  <!-- Input -->
-  <section class="input-section">
+  <section class="input-sec">
     <div class="input-card">
-      <div class="input-card-header">
-        <div class="input-card-title"><i class="fab fa-tiktok"></i> Tempel link TikTok</div>
-        <div class="input-hint">Hanya menerima link tiktok.com</div>
+      <div class="input-top">
+        <div class="input-lbl"><i class="fab fa-tiktok"></i> Tempel Link TikTok</div>
+        <div class="input-hint">tiktok.com only</div>
       </div>
       <div class="input-box">
         <input type="text" id="u" placeholder="https://www.tiktok.com/@user/video/..." autocomplete="off">
-        <button class="paste-btn" id="bp" title="Paste"><i class="far fa-clipboard"></i></button>
-        <button class="go-btn" id="go">
-          <i class="fas fa-arrow-down" id="goIcon"></i>
-          <span id="goText">Download</span>
-        </button>
+        <button class="paste-btn" id="bp"><i class="far fa-clipboard"></i></button>
+        <button class="go-btn" id="go"><i class="fas fa-arrow-down" id="goI"></i><span id="goT">Download</span></button>
       </div>
-      <div class="detected" id="det"><i class="fas fa-check-circle"></i><span id="detT"></span></div>
+      <div class="det" id="det"><i class="fas fa-check-circle"></i><span id="detT"></span></div>
     </div>
   </section>
 
-  <!-- Result -->
   <div class="result" id="rc">
-    <div class="result-card">
-      <div class="result-top">
-        <img class="result-thumb" id="rth" src="" alt="">
-        <div class="result-meta">
-          <div class="result-title" id="rtl"></div>
-          <div class="result-tag" id="rpl"><i class="fab fa-tiktok"></i> TikTok</div>
-        </div>
+    <div class="res-card">
+      <div class="res-top">
+        <img class="res-thumb" id="rth" src="" alt="">
+        <div class="res-tag"><i class="fab fa-tiktok"></i> TikTok</div>
+        <div class="res-title" id="rtl"></div>
       </div>
-      <div class="result-dl" id="dls"></div>
+      <div class="res-dl" id="dls"></div>
     </div>
   </div>
 
-  <!-- Error -->
   <div class="error" id="ec">
     <i class="fas fa-circle-exclamation"></i>
     <span id="ect"></span>
   </div>
 
-  <!-- How to -->
-  <section class="howto" id="howto">
+  <section class="howto">
     <h2>Cara Pakai</h2>
-    <p class="sub">3 langkah simpel, ga ribet</p>
-    <div class="howto-steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Salin Link</h3>
-        <p>Buka TikTok, tap "Share" lalu "Copy Link"</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Tempel di Sini</h3>
-        <p>Paste link di kolom input di atas, klik Download</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Simpan Video</h3>
-        <p>Pilih kualitas, klik Simpan. Selesai!</p>
-      </div>
+    <div class="steps">
+      <div class="step"><div class="step-n">1</div><h3>Salin Link</h3><p>Buka TikTok → Share → Copy Link</p></div>
+      <div class="step"><div class="step-n">2</div><h3>Tempel</h3><p>Paste link di kolom atas, klik Download</p></div>
+      <div class="step"><div class="step-n">3</div><h3>Simpan</h3><p>Klik tombol download, video tersimpan</p></div>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" id="features">
-    <div class="feat">
-      <div class="feat-icon"><i class="fas fa-droplet-slash"></i></div>
-      <h3>Tanpa Watermark</h3>
-      <p>Video dihapus watermark-nya sepenuhnya. Bersih dan original.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon"><i class="fas fa-bolt"></i></div>
-      <h3>Proses Instan</h3>
-      <p>Download dalam hitungan detik. Tidak perlu menunggu lama.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon"><i class="fas fa-shield-halved"></i></div>
-      <h3>Aman & Privat</h3>
-      <p>Tidak ada data yang disimpan. Privasi kamu terjaga 100%.</p>
-    </div>
-    <div class="feat">
-      <div class="feat-icon"><i class="fas fa-infinity"></i></div>
-      <h3>Gratis Tanpa Batas</h3>
-      <p>Tidak perlu daftar, tidak ada limit. Langsung pakai sepuasnya.</p>
-    </div>
+  <section class="feats">
+    <div class="feat"><div class="feat-ico"><i class="fas fa-droplet-slash"></i></div><h3>No Watermark</h3><p>Video bersih tanpa watermark</p></div>
+    <div class="feat"><div class="feat-ico"><i class="fas fa-bolt"></i></div><h3>Instan</h3><p>Download dalam hitungan detik</p></div>
+    <div class="feat"><div class="feat-ico"><i class="fas fa-shield-halved"></i></div><h3>Aman</h3><p>Data tidak disimpan di server</p></div>
+    <div class="feat"><div class="feat-ico"><i class="fas fa-infinity"></i></div><h3>Gratis</h3><p>Tanpa daftar, tanpa batas</p></div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Save<span class="footer-tik">Vid</span> &middot; <i class="fab fa-tiktok" style="color:var(--accent)"></i> TikTok Downloader &middot; Built with <i class="fas fa-heart" style="color:var(--accent);font-size:10px"></i></p>
+    <p>&copy; 2025 Save<span class="ft-tk">Vid</span> &middot; <i class="fab fa-tiktok" style="color:var(--accent)"></i> TikTok Downloader</p>
   </footer>
 
 </div>
 
 <script>
 var $=function(id){return document.getElementById(id)};
-var u=$('u'),bp=$('bp'),go=$('go'),goIcon=$('goIcon'),goText=$('goText');
+var u=$('u'),bp=$('bp'),go=$('go'),goI=$('goI'),goT=$('goT');
 var det=$('det'),detT=$('detT'),rc=$('rc'),ec=$('ec'),ect=$('ect'),dls=$('dls');
 
 u.addEventListener('input',function(){
   var v=u.value.trim();
-  if(/tiktok\.com/i.test(v)){
-    det.classList.add('show');
-    detT.innerHTML='<i class="fab fa-tiktok"></i> Link TikTok terdeteksi';
-  }else{
-    det.classList.remove('show');
-  }
+  if(/tiktok\.com/i.test(v)){det.classList.add('show');detT.innerHTML='Link TikTok terdeteksi'}
+  else{det.classList.remove('show')}
   rc.classList.remove('show');ec.classList.remove('show');
 });
 
@@ -475,15 +225,15 @@ bp.addEventListener('click',async function(){
 
 go.addEventListener('click',async function(){
   var url=u.value.trim();
-  if(!url){showE('Masukkan link TikTok terlebih dahulu.');return}
-  if(!/tiktok\.com/i.test(url)){showE('Hanya menerima link TikTok. Contoh: https://www.tiktok.com/@user/video/...');return}
+  if(!url){showE('Masukkan link TikTok.');return}
+  if(!/tiktok\.com/i.test(url)){showE('Hanya menerima link TikTok.');return}
   setLoading(true);rc.classList.remove('show');ec.classList.remove('show');
   try{
     var r=await fetch('/api/download',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url})});
     var d=await r.json();
-    if(!d.success){showE(d.error||'Gagal memproses video. Coba link lain.');return}
+    if(!d.success){showE(d.error||'Gagal. Coba link lain.');return}
     showR(d);
-  }catch(e){showE('Koneksi gagal. Periksa internet dan coba lagi.')}
+  }catch(e){showE('Koneksi gagal. Coba lagi.')}
   finally{setLoading(false)}
 });
 
@@ -496,18 +246,18 @@ function showR(d){
   d.downloads.forEach(function(it){
     var isA=it.type==='audio';
     var div=document.createElement('div');div.className='dl-item';
-    div.innerHTML='<div class="dl-left"><div class="dl-icon '+(isA?'audio':'video')+'"><i class="fas '+(isA?'fa-music':'fa-play')+'"></i></div><div class="dl-label">'+it.quality+'</div></div><a href="'+it.url+'" target="_blank" rel="noopener" class="dl-btn '+(isA?'audio':'video')+'"><i class="fas fa-download"></i> Simpan</a>';
+    div.innerHTML='<a href="'+it.url+'" target="_blank" rel="noopener" class="dl-btn '+(isA?'audio':'video')+'"><i class="fas '+(isA?'fa-music':'fa-download')+'"></i>'+it.quality+'<span class="dl-quality">'+(isA?'Audio':'Video')+'</span></a>';
     dls.appendChild(div);
   });
   rc.classList.add('show');
-  rc.scrollIntoView({behavior:'smooth',block:'nearest'});
+  setTimeout(function(){rc.scrollIntoView({behavior:'smooth',block:'start'})},100);
 }
 
 function showE(m){ect.textContent=m;ec.classList.add('show')}
 function setLoading(on){
   go.disabled=on;
-  if(on){goIcon.className='spin';goText.textContent='Proses...'}
-  else{goIcon.className='fas fa-arrow-down';goText.textContent='Download'}
+  if(on){goI.className='spin';goT.textContent='Proses...'}
+  else{goI.className='fas fa-arrow-down';goT.textContent='Download'}
 }
 </script>
 </body>
