@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaveVid | Download Video Sosial Media</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
+    body{background:linear-gradient(160deg,#0f172a,#1e1b4b 50%,#0f172a);min-height:100vh;color:#fff;overflow-x:hidden}
+    .blob{position:fixed;border-radius:50%;filter:blur(80px);opacity:.15;pointer-events:none;z-index:0}
+    .b1{width:500px;height:500px;background:#8b5cf6;top:-100px;left:-100px;animation:bf 12s ease-in-out infinite}
+    .b2{width:400px;height:400px;background:#3b82f6;bottom:-50px;right:-50px;animation:bf 15s ease-in-out infinite reverse}
+    .b3{width:300px;height:300px;background:#ec4899;top:50%;left:50%;transform:translate(-50%,-50%);animation:bf 10s ease-in-out infinite 2s}
+    @keyframes bf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-30px) scale(1.1)}66%{transform:translate(-20px,20px) scale(.9)}}
+    .glass{background:rgba(255,255,255,.03);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.08)}
+    .ct{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:40px 20px;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+    .logo{display:flex;align-items:center;gap:12px;font-size:28px;font-weight:800}
+    .li{width:48px;height:48px;background:linear-gradient(135deg,#8b5cf6,#3b82f6);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 8px 24px rgba(139,92,246,.3)}
+    .gt{background:linear-gradient(135deg,#c084fc,#60a5fa);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .tg{text-align:center;color:#94a3b8;font-size:15px;line-height:1.6;max-width:480px}
+    .pl{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .pb{display:flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;color:#94a3b8;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);transition:.3s}
+    .pb.ac{border-color:rgba(139,92,246,.4);background:rgba(139,92,246,.1);color:#c084fc}
+    .pb i{font-size:14px}
+    .ic{width:100%;border-radius:20px;padding:24px;transition:.3s}
+    .ic:focus-within{border-color:rgba(139,92,246,.3);box-shadow:0 0 0 4px rgba(139,92,246,.08)}
+    .iw{display:flex;gap:10px;align-items:center}
+    .inf{flex:1;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 18px;color:#fff;font-size:14px;outline:none;transition:.3s}
+    .inf::placeholder{color:#475569}
+    .inf:focus{border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.15)}
+    .bp{width:48px;height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:#94a3b8;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:.3s;flex-shrink:0}
+    .bp:hover{background:rgba(139,92,246,.15);color:#c084fc}
+    .bd{width:100%;margin-top:14px;padding:16px;border-radius:14px;border:none;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;font-size:15px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:.3s;box-shadow:0 8px 24px rgba(139,92,246,.25)}
+    .bd:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 12px 32px rgba(139,92,246,.35)}
+    .bd:disabled{opacity:.5;cursor:not-allowed;transform:none}
+    .dt{display:none;align-items:center;gap:8px;margin-top:12px;padding:8px 14px;border-radius:10px;background:rgba(139,92,246,.08);border:1px solid rgba(139,92,246,.15);font-size:13px;color:#c084fc}
+    .dt.sh{display:flex}
+    .rc{width:100%;border-radius:20px;padding:24px;display:none;animation:su .4s ease}
+    .rc.sh{display:block}
+    @keyframes su{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    .rh{display:flex;gap:16px;margin-bottom:20px}
+    .rt{width:120px;height:90px;border-radius:12px;object-fit:cover;background:rgba(255,255,255,.05);flex-shrink:0}
+    .ri{flex:1;min-width:0}
+    .rl{font-size:14px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
+    .rp{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .rp.tiktok{background:rgba(0,0,0,.4);color:#ff0050}.rp.youtube{background:rgba(255,0,0,.15);color:#ff4444}.rp.twitter{background:rgba(29,161,242,.15);color:#1da1f2}.rp.facebook{background:rgba(24,119,242,.15);color:#1877f2}.rp.instagram{background:rgba(225,48,108,.15);color:#e1306c}
+    .dl{display:flex;flex-direction:column;gap:8px}
+    .di{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-radius:12px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.05);transition:.3s}
+    .di:hover{border-color:rgba(139,92,246,.3);background:rgba(139,92,246,.05)}
+    .dla{display:flex;align-items:center;gap:10px}
+    .dli{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:14px}
+    .dli.v{background:rgba(139,92,246,.15);color:#c084fc}.dli.a{background:rgba(59,130,246,.15);color:#60a5fa}
+    .dlq{font-size:13px;font-weight:600}
+    .dlb{padding:8px 18px;border-radius:10px;border:none;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:.3s;text-decoration:none}
+    .dlb.v{background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff}.dlb.a{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff}
+    .dlb:hover{transform:scale(1.05)}
+    .sp{width:20px;height:20px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spi .8s linear infinite;display:inline-block}
+    @keyframes spi{to{transform:rotate(360deg)}}
+    .ec{width:100%;border-radius:16px;padding:20px 24px;display:none;border-color:rgba(239,68,68,.2);background:rgba(239,68,68,.05);animation:su .4s ease}
+    .ec.sh{display:flex;align-items:center;gap:14px}
+    .eci{font-size:24px;color:#ef4444;flex-shrink:0}
+    .ect{font-size:13px;color:#fca5a5;line-height:1.5}
+    .ft{text-align:center;color:#475569;font-size:12px;padding:20px}
+    @media(max-width:640px){.ct{padding:24px 16px;gap:24px}.logo{font-size:22px}.li{width:40px;height:40px;font-size:18px}.rh{flex-direction:column}.rt{width:100%;height:180px}.di{flex-direction:column;gap:10px;align-items:stretch}.dlb{justify-content:center}}
+  </style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<div class="ct">
+  <div class="logo"><div class="li"><i class="fas fa-download"></i></div><span class="gt">SaveVid</span></div>
+  <p class="tg">Download video dari TikTok, YouTube, Twitter, Facebook, Instagram. Gratis, cepat, tanpa watermark.</p>
+  <div class="pl">
+    <div class="pb" data-p="tiktok"><i class="fab fa-tiktok"></i> TikTok</div>
+    <div class="pb" data-p="youtube"><i class="fab fa-youtube"></i> YouTube</div>
+    <div class="pb" data-p="twitter"><i class="fab fa-x-twitter"></i> Twitter</div>
+    <div class="pb" data-p="facebook"><i class="fab fa-facebook"></i> Facebook</div>
+    <div class="pb" data-p="instagram"><i class="fab fa-instagram"></i> Instagram</div>
+  </div>
+  <div class="ic glass">
+    <div class="iw">
+      <input type="text" class="inf" id="u" placeholder="Tempel link video di sini..." autocomplete="off">
+      <button class="bp" id="bp" title="Paste"><i class="fas fa-paste"></i></button>
+    </div>
+    <div class="dt" id="dt"><i class="fas fa-check-circle"></i><span id="dtt"></span></div>
+    <button class="bd" id="go"><i class="fas fa-download"></i><span id="bt">Download Video</span></button>
+  </div>
+  <div class="rc glass" id="rc">
+    <div class="rh">
+      <img class="rt" id="rth" src="" alt="">
+      <div class="ri"><div class="rl" id="rtl"></div><div class="rp" id="rpl"></div></div>
+    </div>
+    <div class="dl" id="dls"></div>
+  </div>
+  <div class="ec glass" id="ec"><div class="eci"><i class="fas fa-exclamation-triangle"></i></div><div class="ect" id="ect"></div></div>
+  <div class="ft"><p>&copy; 2025 SaveVid</p></div>
+</div>
+<script>
+var $=function(id){return document.getElementById(id)};
+var u=$('u'),bp=$('bp'),go=$('go'),bt=$('bt'),dt=$('dt'),dtt=$('dtt'),rc=$('rc'),ec=$('ec'),ect=$('ect'),dls=$('dls');
+var pbs=document.querySelectorAll('.pb');
+var pi={tiktok:{n:'TikTok',i:'fab fa-tiktok'},youtube:{n:'YouTube',i:'fab fa-youtube'},twitter:{n:'Twitter/X',i:'fab fa-x-twitter'},facebook:{n:'Facebook',i:'fab fa-facebook'},instagram:{n:'Instagram',i:'fab fa-instagram'}};
+function dp(v){var c=[['tiktok',/tiktok\.com/i],['youtube',/youtube\.com|youtu\.be/i],['twitter',/twitter\.com|x\.com/i],['facebook',/facebook\.com|fb\.watch/i],['instagram',/instagram\.com/i]];for(var i=0;i<c.length;i++)if(c[i][1].test(v))return c[i][0];return null}
+u.addEventListener('input',function(){var p=dp(u.value);pbs.forEach(function(b){b.classList.toggle('ac',b.dataset.p===p)});if(p){dt.classList.add('sh');dtt.innerHTML='<i class="'+pi[p].i+'"></i> '+pi[p].n+' terdeteksi'}else{dt.classList.remove('sh')}rc.classList.remove('sh');ec.classList.remove('sh')});
+bp.addEventListener('click',async function(){try{var t=await navigator.clipboard.readText();u.value=t;u.dispatchEvent(new Event('input'))}catch(e){u.focus()}});
+go.addEventListener('click',async function(){var url=u.value.trim();if(!url){showE('Masukkan link video.');return}if(!dp(url)){showE('Platform tidak dikenali.');return}setL(true);rc.classList.remove('sh');ec.classList.remove('sh');try{var r=await fetch('/api/download',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url})});var d=await r.json();if(!d.success){showE(d.error||'Gagal.');return}showR(d)}catch(e){showE('Koneksi gagal.')}finally{setL(false)}});
+u.addEventListener('keydown',function(e){if(e.key==='Enter')go.click()});
+function showR(d){var p=d.platform,info=pi[p]||{n:p,i:'fas fa-video'};$('rth').src=d.thumbnail||'https://placehold.co/480x270/1e1b4b/8b5cf6?text='+info.n;$('rtl').textContent=d.title||'Untitled';$('rpl').className='rp '+p;$('rpl').innerHTML='<i class="'+info.i+'"></i> '+info.n;dls.innerHTML='';d.downloads.forEach(function(it){var ia=it.type==='audio';var div=document.createElement('div');div.className='di';div.innerHTML='<div class="dla"><div class="dli '+(ia?'a':'v')+'"><i class="fas '+(ia?'fa-music':'fa-film')+'"></i></div><div class="dlq">'+it.quality+'</div></div><a href="'+it.url+'" target="_blank" class="dlb '+(ia?'a':'v')+'"><i class="fas fa-download"></i> Download</a>';dls.appendChild(div)});rc.classList.add('sh')}
+function showE(m){ect.textContent=m;ec.classList.add('sh')}
+function setL(on){go.disabled=on;if(on){bt.innerHTML='<div class="sp"></div> Memproses...'}else{bt.innerHTML='Download Video'}}
+</script>
+</body>
+</html>
