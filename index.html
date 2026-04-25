@@ -4,241 +4,320 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>SaveVid — Download TikTok Tanpa Watermark</title>
-  <meta name="description" content="Download video TikTok tanpa watermark, gratis, cepat.">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     :root{
-      --w:#fff;--g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;
-      --g300:#d1d5db;--g400:#9ca3af;--g500:#6b7280;--g600:#4b5563;
-      --g700:#374151;--g800:#1f2937;--g900:#111827;--bk:#000;
-      --ac:#ff0050;--ac2:#ff2d6a;
-      --red:#ef4444;--grn:#22c55e;--blu:#3b82f6;--pnk:#ec4899;
+      --bg:#000;--card:#0a0a0a;--card2:#111;--card3:#1a1a1a;
+      --border:rgba(255,255,255,.05);--border2:rgba(255,255,255,.1);
+      --text:#fff;--text2:#888;--text3:#555;
+      --red:#ef4444;--red2:#dc2626;--red-glow:rgba(239,68,68,.2);
+      --pink:#ff0050;--pink-bg:rgba(255,0,80,.08);--pink-border:rgba(255,0,80,.2);
+      --purple:#a78bfa;--blue:#60a5fa;--green:#22c55e;
     }
-    html{scroll-behavior:smooth}
-    body{font-family:'Inter',sans-serif;background:var(--w);color:var(--g900);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-    .wrap{max-width:600px;margin:0 auto;padding:0 16px}
+    html,body{
+      font-family:'Plus Jakarta Sans',sans-serif;
+      background:var(--bg);color:var(--text);
+      min-height:100vh;min-height:100dvh;
+      overflow-x:hidden;-webkit-font-smoothing:antialiased;
+    }
+    .page{
+      max-width:480px;margin:0 auto;
+      min-height:100vh;min-height:100dvh;
+      display:flex;flex-direction:column;
+    }
 
-    nav{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--g200)}
-    .nl{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px}
-    .nl .ic{width:30px;height:30px;border-radius:8px;background:var(--bk);display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px}
-    .nl .tk{color:var(--ac)}
-    .nr a{width:30px;height:30px;border-radius:8px;border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;color:var(--g500);text-decoration:none;font-size:13px;transition:.2s}
-    .nr a:hover{background:var(--g50)}
+    /* Hero */
+    .hero{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--card)}
+    .hero img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:70%;background:linear-gradient(transparent,rgba(0,0,0,.95))}
+    .hero-badge{
+      position:absolute;top:12px;right:12px;z-index:3;
+      display:flex;align-items:center;gap:5px;
+      padding:4px 10px 4px 6px;border-radius:100px;
+      background:rgba(0,0,0,.5);backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .hero-badge .dot{
+      width:6px;height:6px;border-radius:50%;
+      background:var(--green);box-shadow:0 0 8px rgba(34,197,94,.6);
+      animation:blink 2s ease infinite;
+    }
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-badge span{font-size:9px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:.8px}
+    .brand{
+      position:absolute;bottom:0;left:0;right:0;z-index:3;
+      padding:16px 20px;display:flex;align-items:center;gap:14px;
+    }
+    .brand-logo{
+      width:50px;height:50px;border-radius:15px;
+      background:linear-gradient(135deg,var(--pink),#ff3366);
+      display:flex;align-items:center;justify-content:center;
+      font-size:22px;color:#fff;flex-shrink:0;
+      box-shadow:0 4px 24px rgba(255,0,80,.3);
+    }
+    .brand-text h1{font-size:18px;font-weight:800;letter-spacing:-.3px;line-height:1.2}
+    .brand-text p{font-size:11px;color:rgba(255,255,255,.4);font-weight:500;margin-top:2px}
 
-    .hero{text-align:center;padding:20px 0 16px}
-    .hero-img{width:140px;height:140px;border-radius:20px;overflow:hidden;margin:0 auto 16px;border:1px solid var(--g200);box-shadow:0 6px 24px rgba(0,0,0,.07)}
-    .hero-img img{width:100%;height:100%;object-fit:cover;display:block}
-    .hero-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;background:var(--g100);border:1px solid var(--g200);font-size:11px;font-weight:600;color:var(--g500);margin-bottom:12px}
-    .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--grn);animation:pu 2s ease-in-out infinite}
-    @keyframes pu{0%,100%{opacity:1}50%{opacity:.3}}
-    .hero h1{font-size:22px;font-weight:900;letter-spacing:-.3px;line-height:1.15;margin-bottom:8px}
-    .hero .gr{background:linear-gradient(135deg,var(--ac),var(--pnk));-webkit-background-clip:text;background-clip:text;color:transparent}
-    .hero p{font-size:12px;color:var(--g500);line-height:1.6;margin:0 auto 12px}
-    .tkb{display:inline-flex;align-items:center;gap:7px;padding:7px 16px;border-radius:10px;background:var(--bk);color:#fff;font-size:12px;font-weight:700}
-    .tkb i{font-size:16px;color:var(--ac)}
+    /* Content */
+    .content{flex:1;padding:20px;display:flex;flex-direction:column;gap:18px}
 
-    .isec{margin-bottom:20px}
-    .icard{background:var(--g50);border:1px solid var(--g200);border-radius:16px;padding:16px}
-    .itop{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-    .ilbl{font-size:10px;font-weight:700;color:var(--g500);text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:5px}
-    .ilbl i{color:var(--ac);font-size:12px}
-    .ihint{font-size:9px;color:var(--g400)}
-    .ibox{display:flex;align-items:center;background:var(--w);border:2px solid var(--g200);border-radius:12px;overflow:hidden;transition:.3s}
-    .ibox:focus-within{border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,0,80,.06)}
-    .ibox input{flex:1;background:transparent;border:none;outline:none;padding:12px 14px;color:var(--g900);font-size:13px;font-family:inherit}
-    .ibox input::placeholder{color:var(--g400)}
-    .pbtn{padding:10px;background:transparent;border:none;color:var(--g400);cursor:pointer;font-size:14px}
-    .pbtn:hover{color:var(--ac)}
-    .gbtn{margin:3px;border:none;border-radius:8px;padding:10px 18px;background:var(--ac);color:#fff;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
-    .gbtn:active{transform:scale(.96)}
-    .gbtn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-    .gbtn .sp{width:14px;height:14px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:spp .6s linear infinite}
-    @keyframes spp{to{transform:rotate(360deg)}}
-    .det{display:none;align-items:center;gap:5px;margin-top:8px;font-size:11px;color:var(--ac);font-weight:600}
-    .det.show{display:flex}
+    /* Badge */
+    .tk-badge{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:7px 14px;border-radius:10px;
+      background:var(--pink-bg);border:1px solid var(--pink-border);
+      font-size:12px;font-weight:600;color:var(--pink);
+      width:fit-content;
+    }
+    .tk-badge i{font-size:14px}
 
-    .result{display:none;margin-bottom:20px;animation:fu .3s ease}
-    .result.show{display:block}
-    @keyframes fu{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-    .rcard{background:var(--w);border:1px solid var(--g200);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.05)}
-    .rtop{padding:14px}
-    .rthumb{width:100%;aspect-ratio:16/9;border-radius:10px;object-fit:cover;background:var(--g100);margin-bottom:10px;display:block;border:1px solid var(--g200)}
-    .rtag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:6px;font-size:10px;font-weight:700;text-transform:uppercase;background:rgba(255,0,80,.06);color:var(--ac);margin-bottom:6px}
-    .rtitle{font-size:13px;font-weight:700;line-height:1.4;color:var(--g800);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    /* Detected */
+    .detect{
+      display:none;align-items:center;gap:6px;
+      font-size:11px;font-weight:600;color:var(--pink);
+    }
+    .detect.show{display:flex}
 
-    .rdl{padding:12px 14px;display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--g100)}
-    .dbtn{
+    /* Input */
+    .input-row{
+      display:flex;align-items:center;gap:0;
+      background:var(--card2);border:1px solid var(--border);
+      border-radius:14px;overflow:hidden;transition:.25s;
+    }
+    .input-row:focus-within{border-color:var(--border2);box-shadow:0 0 0 3px rgba(255,0,80,.05)}
+    .input-row input{
+      flex:1;min-width:0;background:transparent;border:none;outline:none;
+      padding:14px 0 14px 16px;color:var(--text);font-size:13px;font-family:inherit;
+    }
+    .input-row input::placeholder{color:var(--text3)}
+    .clip-btn{
+      padding:10px 14px;background:transparent;border:none;
+      color:var(--text3);cursor:pointer;font-size:15px;transition:.2s;
+    }
+    .clip-btn:hover,.clip-btn:active{color:var(--text)}
+
+    /* Button */
+    .red-btn{
+      width:100%;padding:15px;border-radius:14px;border:none;
+      background:linear-gradient(135deg,var(--pink),#ff3366);
+      color:#fff;font-size:15px;font-weight:700;
+      cursor:pointer;font-family:inherit;
       display:flex;align-items:center;justify-content:center;gap:8px;
-      width:100%;padding:14px;border-radius:10px;border:none;
-      font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;
-      text-decoration:none;transition:.15s;
+      transition:.25s;box-shadow:0 4px 24px rgba(255,0,80,.25);
+      position:relative;overflow:hidden;
     }
-    .dbtn.video{background:var(--ac);color:#fff}
-    .dbtn.audio{background:var(--blu);color:#fff}
-    .dbtn:active{transform:scale(.97)}
-    .dbtn i{font-size:15px}
-    .dbtn small{font-size:10px;font-weight:500;opacity:.75;margin-left:2px}
-
-    .error{display:none;margin-bottom:20px;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:10px;padding:12px 14px;animation:fu .3s ease}
-    .error.show{display:flex;align-items:center;gap:8px}
-    .error i{color:var(--red);font-size:15px;flex-shrink:0}
-    .error span{font-size:11px;color:var(--red);line-height:1.5}
-
-    .howto{padding:24px 0;border-top:1px solid var(--g200)}
-    .howto h2{font-size:16px;font-weight:800;text-align:center;margin-bottom:14px}
-    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-    .step{text-align:center;padding:12px 8px;border-radius:12px;border:1px solid var(--g200)}
-    .sn{width:28px;height:28px;border-radius:8px;background:var(--bk);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;margin:0 auto 8px}
-    .step h3{font-size:11px;font-weight:700;margin-bottom:3px;color:var(--g800)}
-    .step p{font-size:9px;color:var(--g400);line-height:1.4}
-
-    .feats{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:20px 0 32px;border-top:1px solid var(--g200)}
-    .feat{padding:14px;border-radius:12px;border:1px solid var(--g200)}
-    .fi{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;margin-bottom:8px}
-    .feat:nth-child(1) .fi{background:rgba(255,0,80,.06);color:var(--ac)}
-    .feat:nth-child(2) .fi{background:rgba(34,197,94,.06);color:var(--grn)}
-    .feat:nth-child(3) .fi{background:rgba(59,130,246,.06);color:var(--blu)}
-    .feat:nth-child(4) .fi{background:rgba(236,72,153,.06);color:var(--pnk)}
-    .feat h3{font-size:11px;font-weight:700;margin-bottom:2px;color:var(--g800)}
-    .feat p{font-size:9px;color:var(--g400);line-height:1.4}
-
-    footer{border-top:1px solid var(--g200);padding:16px 0;text-align:center}
-    footer p{font-size:10px;color:var(--g400)}
-    .ftk{color:var(--ac)}
-
-    @media(min-width:768px){
-      .wrap{max-width:640px;padding:0 24px}
-      .hero{padding:36px 0 24px}
-      .hero-img{width:180px;height:180px}
-      .hero h1{font-size:32px}
-      .rthumb{aspect-ratio:16/9}
+    .red-btn::before{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,.15) 50%,transparent 60%);
+      transform:translateX(-100%);transition:.6s;
     }
+    .red-btn:hover::before{transform:translateX(100%)}
+    .red-btn:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(255,0,80,.35)}
+    .red-btn:active{transform:scale(.98)}
+    .red-btn:disabled{opacity:.4;cursor:not-allowed;transform:none!important;box-shadow:none}
+    .spin{width:16px;height:16px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:sp .6s linear infinite}
+    @keyframes sp{to{transform:rotate(360deg)}}
+
+    /* Result */
+    .result{display:none;animation:up .35s ease}
+    .result.show{display:block}
+    @keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .res-card{background:var(--card2);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+    .res-thumb{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--card)}
+    .res-body{padding:14px 16px}
+    .res-title{font-size:13px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px}
+    .res-credit{font-size:11px;font-weight:700;color:var(--purple);margin-bottom:8px}
+    .res-tag{
+      display:inline-flex;align-items:center;gap:4px;
+      padding:2px 8px;border-radius:5px;
+      font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;
+      background:var(--pink-bg);color:var(--pink);
+    }
+    .res-dl{border-top:1px solid var(--border);padding:8px 16px 12px}
+    .res-item{display:flex;align-items:center;justify-content:space-between;padding:9px 0}
+    .res-item:not(:last-child){border-bottom:1px solid var(--border)}
+    .res-left{display:flex;align-items:center;gap:10px}
+    .res-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px}
+    .res-ico.video{background:var(--pink-bg);color:var(--pink)}
+    .res-ico.audio{background:rgba(96,165,250,.08);color:var(--blue)}
+    .res-qual{font-size:12px;font-weight:600}
+    .res-save{
+      padding:6px 16px;border-radius:8px;border:none;
+      font-size:10px;font-weight:700;cursor:pointer;
+      font-family:inherit;display:flex;align-items:center;gap:5px;
+      text-decoration:none;transition:.2s;
+      background:var(--pink-bg);color:var(--pink);
+    }
+    .res-save.audio-dl{background:rgba(96,165,250,.08);color:var(--blue)}
+    .res-save:hover,.res-save:active{background:var(--pink-border);color:#fff}
+
+    /* Error */
+    .err{display:none;animation:up .35s ease;background:rgba(239,68,68,.04);border:1px solid rgba(239,68,68,.12);border-radius:12px;padding:12px 14px}
+    .err.show{display:flex;align-items:center;gap:10px}
+    .err i{color:var(--red);font-size:15px;flex-shrink:0}
+    .err span{font-size:11px;color:#fca5a5;line-height:1.5}
+
+    /* Info */
+    .info{
+      padding:14px;border-radius:12px;
+      background:var(--card2);border:1px solid var(--border);
+      display:flex;align-items:flex-start;gap:10px;
+    }
+    .info i{color:var(--pink);font-size:14px;margin-top:2px;flex-shrink:0}
+    .info p{font-size:11px;color:var(--text3);line-height:1.6}
+
+    /* Cara pakai */
+    .how{padding:18px 0 0;border-top:1px solid var(--border)}
+    .how h3{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:14px;letter-spacing:.3px}
+    .step{display:flex;align-items:flex-start;gap:12px}
+    .step+.step{margin-top:12px}
+    .step-n{
+      width:26px;height:26px;border-radius:8px;
+      background:var(--card2);border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      font-size:10px;font-weight:800;color:var(--text3);flex-shrink:0;
+    }
+    .step-t{font-size:11px;color:var(--text3);line-height:1.5;padding-top:3px}
+    .step-t b{color:var(--text2);font-weight:600}
+
+    /* Footer */
+    .foot{padding:16px 20px 28px;text-align:center;font-size:10px;color:var(--text3);border-top:1px solid var(--border)}
+
+    ::-webkit-scrollbar{width:0;display:none}
   </style>
 </head>
 <body>
-<div class="wrap">
 
-  <nav>
-    <div class="nl"><div class="ic"><i class="fas fa-download"></i></div>Save<span class="tk">Vid</span></div>
-    <div class="nr"><a href="https://github.com/yunita576/video-downloader" target="_blank"><i class="fab fa-github"></i></a></div>
-  </nav>
+<div class="page">
 
-  <section class="hero">
-    <div class="hero-img">
-      <img src="https://z-cdn-media.chatglm.cn/files/f5e7b3b7-3b65-4213-911e-0654ddcfeca9.jpg?auth_key=1876964054-4281e64405e24a8dbbad45057c9d224b-0-c1218fc05366ee558a73523b15cb071d" alt="SaveVid">
+  <div class="hero">
+    <img src="https://z-cdn-media.chatglm.cn/files/fe36a052-0f08-4d7b-82b4-b4cf241e06b9.jpg?auth_key=1877135148-699e3032d4294facaeae67a2bf488b5e-0-5acd15da378ae45586ee4262def36c46" alt="SaveVid">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>Online 24/7</span>
     </div>
-    <div class="hero-badge"><span class="dot"></span> Online 24/7</div>
-    <h1>Download Video <span class="gr">TikTok</span> Tanpa Watermark</h1>
-    <p>Tempel link, klik download. Video bersih tanpa watermark, gratis tanpa batas.</p>
-    <div class="tkb"><i class="fab fa-tiktok"></i> TikTok Downloader</div>
-  </section>
-
-  <section class="isec">
-    <div class="icard">
-      <div class="itop">
-        <div class="ilbl"><i class="fab fa-tiktok"></i> Tempel Link TikTok</div>
-        <div class="ihint">tiktok.com only</div>
+    <div class="brand">
+      <div class="brand-logo"><i class="fas fa-video"></i></div>
+      <div class="brand-text">
+        <h1>Save Vid</h1>
+        <p>Download TikTok Tanpa Watermark</p>
       </div>
-      <div class="ibox">
-        <input type="text" id="u" placeholder="https://www.tiktok.com/@user/video/..." autocomplete="off">
-        <button class="pbtn" id="bp"><i class="far fa-clipboard"></i></button>
-        <button class="gbtn" id="go"><i class="fas fa-arrow-down" id="goI"></i><span id="goT">Download</span></button>
-      </div>
-      <div class="det" id="det"><i class="fas fa-check-circle"></i><span id="detT"></span></div>
-    </div>
-  </section>
-
-  <div class="result" id="rc">
-    <div class="rcard">
-      <div class="rtop">
-        <img class="rthumb" id="rth" src="" alt="">
-        <div class="rtag"><i class="fab fa-tiktok"></i> TikTok</div>
-        <div class="rtitle" id="rtl"></div>
-      </div>
-      <div class="rdl" id="dls"></div>
     </div>
   </div>
 
-  <div class="error" id="ec">
-    <i class="fas fa-circle-exclamation"></i>
-    <span id="ect"></span>
+  <div class="content">
+
+    <div class="tk-badge">
+      <i class="fas fa-video"></i>
+      TikTok Downloader
+    </div>
+
+    <div class="detect" id="det"><i class="fas fa-check-circle"></i><span id="detT"></span></div>
+
+    <div class="input-row">
+      <input type="text" id="u" placeholder="Tempel link TikTok di sini..." autocomplete="off">
+      <button class="clip-btn" id="bp"><i class="far fa-clipboard"></i></button>
+    </div>
+
+    <button class="red-btn" id="go">
+      <i class="fas fa-download" id="goIcon"></i>
+      <span id="goText">Download</span>
+    </button>
+
+    <div class="result" id="rc">
+      <div class="res-card">
+        <img class="res-thumb" id="rth" src="" alt="">
+        <div class="res-body">
+          <div class="res-title" id="rtl"></div>
+          <div class="res-credit">@Nurza™</div>
+          <div class="res-tag"><i class="fas fa-video"></i> TikTok</div>
+        </div>
+        <div class="res-dl" id="dls"></div>
+      </div>
+    </div>
+
+    <div class="err" id="ec">
+      <i class="fas fa-circle-exclamation"></i>
+      <span id="ect"></span>
+    </div>
+
+    <div class="info">
+      <i class="fas fa-shield-halved"></i>
+      <p>Pastikan link yang kamu paste adalah link <b style="color:var(--text2)">TikTok</b>. Video akan didownload tanpa watermark dan tanpa disimpan di server kami.</p>
+    </div>
+
+    <div class="how">
+      <h3>Cara Pakai</h3>
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-t"><b>Buka TikTok</b> → Share → Copy Link</div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-t"><b>Tempel link</b> di kolom atas lalu klik <b>Download</b></div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-t"><b>Pilih kualitas</b> lalu klik <b>Simpan</b> untuk download</div>
+      </div>
+    </div>
+
   </div>
 
-  <section class="howto">
-    <h2>Cara Pakai</h2>
-    <div class="steps">
-      <div class="step"><div class="sn">1</div><h3>Salin Link</h3><p>TikTok → Share → Copy Link</p></div>
-      <div class="step"><div class="sn">2</div><h3>Tempel</h3><p>Paste link, klik Download</p></div>
-      <div class="step"><div class="sn">3</div><h3>Simpan</h3><p>Klik tombol, video tersimpan</p></div>
-    </div>
-  </section>
-
-  <section class="feats">
-    <div class="feat"><div class="fi"><i class="fas fa-droplet-slash"></i></div><h3>No Watermark</h3><p>Video bersih tanpa watermark</p></div>
-    <div class="feat"><div class="fi"><i class="fas fa-bolt"></i></div><h3>Instan</h3><p>Download dalam hitungan detik</p></div>
-    <div class="feat"><div class="fi"><i class="fas fa-shield-halved"></i></div><h3>Aman</h3><p>Data tidak disimpan</p></div>
-    <div class="feat"><div class="fi"><i class="fas fa-infinity"></i></div><h3>Gratis</h3><p>Tanpa daftar, tanpa batas</p></div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Save<span class="ftk">Vid</span> &middot; <i class="fab fa-tiktok" style="color:var(--ac)"></i> TikTok Downloader</p>
-  </footer>
+  <div class="foot">@Nurza™</div>
 
 </div>
 
 <script>
 var $=function(id){return document.getElementById(id)};
-var u=$('u'),bp=$('bp'),go=$('go'),goI=$('goI'),goT=$('goT');
+var u=$('u'),bp=$('bp'),go=$('go'),goIcon=$('goIcon'),goText=$('goText');
 var det=$('det'),detT=$('detT'),rc=$('rc'),ec=$('ec'),ect=$('ect'),dls=$('dls');
 
 u.addEventListener('input',function(){
   var v=u.value.trim();
-  if(/tiktok\.com/i.test(v)){det.classList.add('show');detT.innerHTML='Link TikTok terdeteksi'}
+  var isTk=/tiktok\.com/i.test(v);
+  if(isTk){det.classList.add('show');detT.textContent='Link TikTok terdeteksi'}
   else{det.classList.remove('show')}
   rc.classList.remove('show');ec.classList.remove('show');
 });
-
 bp.addEventListener('click',async function(){
   try{var t=await navigator.clipboard.readText();u.value=t;u.dispatchEvent(new Event('input'))}catch(e){u.focus()}
 });
-
 go.addEventListener('click',async function(){
   var url=u.value.trim();
-  if(!url){showE('Masukkan link TikTok.');return}
-  if(!/tiktok\.com/i.test(url)){showE('Hanya menerima link TikTok.');return}
+  if(!url){showE('Masukkan link TikTok terlebih dahulu.');return}
+  if(!/tiktok\.com/i.test(url)){showE('Ini bukan link TikTok. Pastikan link berisi tiktok.com');return}
   setLoading(true);rc.classList.remove('show');ec.classList.remove('show');
   try{
     var r=await fetch('/api/download',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({url:url})});
     var d=await r.json();
-    if(!d.success){showE(d.error||'Gagal. Coba link lain.');return}
+    if(!d.success){showE(d.error||'Gagal memproses video TikTok.');return}
     showR(d);
-  }catch(e){showE('Koneksi gagal. Coba lagi.')}
+  }catch(e){showE('Koneksi gagal. Periksa internet dan coba lagi.')}
   finally{setLoading(false)}
 });
-
 u.addEventListener('keydown',function(e){if(e.key==='Enter')go.click()});
 
 function showR(d){
-  $('rth').src=d.thumbnail||'https://placehold.co/560x320/f3f4f6/9ca3af?text=TikTok';
+  $('rth').src=d.thumbnail||'https://placehold.co/1920x1080/0a0a0a/ff0050?text=TikTok';
   $('rtl').textContent=d.title||'TikTok Video';
   dls.innerHTML='';
   d.downloads.forEach(function(it){
     var isA=it.type==='audio';
-    var div=document.createElement('div');
-    div.innerHTML='<a href="'+it.url+'" target="_blank" rel="noopener" class="dbtn '+(isA?'audio':'video')+'"><i class="fas '+(isA?'fa-music':'fa-download')+'"></i>'+it.quality+'<small>'+((isA)?'Audio':'Video')+'</small></a>';
+    var div=document.createElement('div');div.className='res-item';
+    div.innerHTML='<div class="res-left"><div class="res-ico '+(isA?'audio':'video')+'"><i class="fas '+(isA?'fa-music':'fa-play')+'"></i></div><div class="res-qual">'+it.quality+'</div></div><a href="'+it.url+'" target="_blank" rel="noopener" class="res-save'+(isA?' audio-dl':'')+'"><i class="fas fa-download"></i> Simpan</a>';
     dls.appendChild(div);
   });
   rc.classList.add('show');
-  setTimeout(function(){rc.scrollIntoView({behavior:'smooth',block:'start'})},100);
+  rc.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
-
 function showE(m){ect.textContent=m;ec.classList.add('show')}
 function setLoading(on){
   go.disabled=on;
-  if(on){goI.className='sp';goT.textContent='Proses...'}
-  else{goI.className='fas fa-arrow-down';goT.textContent='Download'}
+  if(on){goIcon.className='spin';goText.textContent='Memproses...'}
+  else{goIcon.className='fas fa-download';goText.textContent='Download'}
 }
 </script>
 </body>
